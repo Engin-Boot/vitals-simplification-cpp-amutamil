@@ -11,7 +11,7 @@ bool resprate_ok(float respRate) {
 }
 
 bool vitalsAreOk(bool bpm_ok, bool spo2_ok, bool resprate_ok) {
-  return (bpm_ok && spo2_ok && respRate_ok);
+  return (bpm_ok && spo2_ok && resprate_ok);
 }
 
 int main() {
