@@ -19,7 +19,7 @@ bool IsLesserThan(float value,float upperLimit) {
 
 
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
-  return (IsInLimit(bpm,70,150) && IsGreaterThan(spo2,70) && IsInLimit(IsInLimit,30,95));
+  return (IsInLimit(bpm,70,150) && IsGreaterThan(spo2,70) && IsInLimit(respRate,30,95));
 }
 
 
