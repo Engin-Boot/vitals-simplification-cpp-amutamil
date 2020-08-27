@@ -1,11 +1,11 @@
 #include <assert.h>
-bpm_upperLimit=70;
-bpm_lowerLimit=150;
+float bpm_upperLimit=70;
+float bpm_lowerLimit=150;
 
-spo2_lowerLimit=70;
+float spo2_lowerLimit=70;
 
-resprate_upperLimit=95;
-resprate_lowerLimit=30;
+float resprate_upperLimit=95;
+float resprate_lowerLimit=30;
 
 bool bpmIsok(float bpm,float lowerLimit,float upperLimit ) {
   return (bpm >= lowerLimit && bpm < upperLimit);
