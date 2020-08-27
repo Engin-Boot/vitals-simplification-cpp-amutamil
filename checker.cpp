@@ -10,8 +10,10 @@ bool resprate_ok(float respRate) {
   return (respRate >= 30 && respRate <= 95);
 }
 
-bool vitalsAreOk(bool bpm_ok, bool spo2_ok, bool resprate_ok) {
-  return (bpm_ok && spo2_ok && resprate_ok);
+bool vitalsAreOk(float bpm, float spo2, float respRate) {
+  return (bpm_ok(bpm) && spo2_ok(spo2) && resprate_ok(respRate));
+}
+
 }
 
 int main() {
