@@ -5,7 +5,7 @@ bool IsInLimit(float value,float lowerLimit,float upperLimit ) {
   return (value >= lowerLimit && value < upperLimit);
 }
 
-bool IsInRange(float value,float lowerLimit) {
+bool IsInRange(float value,float lowerLimit,float upperLimit) {
   return (value < lowerLimit || value >= upperLimit);
 }
 
