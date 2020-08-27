@@ -1,18 +1,25 @@
 #include <assert.h>
 
 
-bool IsBpmInLimit(float bpm,float lowerLimit,float upperLimit ) {
-  return (bpm >= lowerLimit && bpm < upperLimit);
-}
-bool Isspo2InLimit(float spo2,float lowerLimit) {
-  return (spo2 > lowerLimit);
-}
-bool IsRespRate2InLimit(float respRate,float lowerLimit,float upperLimit ) {
-  return (respRate >= lowerLimit && respRate <= upperLimit);
+bool IsInLimit(float value,float lowerLimit,float upperLimit ) {
+  return (value >= lowerLimit && value < upperLimit);
 }
 
+bool IsInRange(float value,float lowerLimit) {
+  return (value < lowerLimit || value >= upperLimit);
+}
+
+bool IsGreaterThan(float value,float lowerLimit) {
+  return (value > lowerLimit);
+}
+bool IsLesserThan(float value,float upperLimit) {
+  return (value < upperLimit);
+}
+
+
+
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
-  return (IsBpmInLimit(bpm,70,150) && Isspo2InLimit(spo2,70) && IsRespRate2InLimit(respRate,30,95));
+  return (IsInLimit(bpm,70,150) && IsGreaterThan(spo2,70) && IsInLimit(IsInLimit,30,95));
 }
 
 
