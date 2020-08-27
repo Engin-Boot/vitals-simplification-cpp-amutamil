@@ -14,7 +14,7 @@ bool vitalsAreOk(float bpm, float spo2, float respRate) {
   return (bpm_ok(bpm) && spo2_ok(spo2) && resprate_ok(respRate));
 }
 
-}
+
 
 int main() {
   assert(vitalsAreOk(80, 95, 60) == true);
