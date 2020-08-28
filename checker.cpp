@@ -1,17 +1,70 @@
 #include <assert.h>
+#include<iostream>
 
-bool vitalsAreOk(float bpm, float spo2, float respRate) {
-  if(bpm < 70 || bpm > 150) {
-    return false;
-  } else if(spo2 < 90) {
-    return false;
-  } else if(respRate < 30 || respRate > 95) {
-    return false;
-  }
-  return true;
+class checkVitals{
+  
+  private:
+    int bpm,spo2,respRate;
+  
+  public:
+   
+    bool vitalsAreOk(float bpm, float spo2, float respRate)
+};
+
+class AlertWithSms
+{
+  public:
+    void raiseAlert(const char* vitalName, const char* level)
+    {
+      std::cout<<"SMS: "<<vitalname<<" " <<level;
+    }
+};
+
+
+class AlertWithSound
+{
+  public:
+    void raiseAlert(const char* vitalName, const char* level)
+    {
+      std::cout<<"Sound: "<<vitalname<<" " <<level;
+    }
+};
+
+alert->raiseAlert("pulse rate","too low");
+
+
+bool IsInLimit(float value,float lowerLimit,float upperLimit ) {
+  return (value >= lowerLimit && value < upperLimit);
 }
 
+bool IsOutOfRange(float value,float lowerLimit,float upperLimit) {
+  return (value < lowerLimit || value >= upperLimit);
+}
+
+bool IsGreaterThan(float value,float lowerLimit) {
+  return (value > lowerLimit);
+}
+bool IsLesserThan(float value,float upperLimit) {
+  return (value < upperLimit);
+}
+
+
+
+bool vitalsAreOk(float bpm, float spo2, float respRate) {
+  return (IsInLimit(bpm,70,150) && IsGreaterThan(spo2,70) && IsInLimit(respRate,30,95));
+}
+
+
+
 int main() {
-  assert(vitalsAreOk(80, 95, 60) == true);
-  assert(vitalsAreOk(60, 90, 40) == false);
+  assert(vitalsAreOk(80, 95, 60) == true);// all are in range/limits
+  assert(vitalsAreOk(50, 85, 45) == false);//bpm fails lowerlimit
+  assert(vitalsAreOk(200, 85, 45) == false);//bpm fails higherlit
+  assert(vitalsAreOk(80, 30, 45) == false);// spo fails 
+  assert(vitalsAreOk(80, 93, 10) == false);//resp fails lowerlimit
+  assert(vitalsAreOk(80, 93, 200) == false);//resp fails upperlimit
+  assert(vitalsAreOk(170, 20, 60) == false);// bpm and spo fails
+  assert(vitalsAreOk(65, 90, 10) == false);// bpm and resprate fails
+  assert(vitalsAreOk(80, 40, 100) == false);// spo and resprate fails
+  assert(vitalsAreOk(160, 10, 25) == false);// all fails
 }
