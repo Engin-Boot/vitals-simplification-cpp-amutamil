@@ -1,4 +1,36 @@
 #include <assert.h>
+#include<iostream>
+
+class checkVitals{
+  
+  private:
+    int bpm,spo2,respRate;
+  
+  public:
+   
+    bool vitalsAreOk(float bpm, float spo2, float respRate)
+};
+
+class AlertWithSms
+{
+  public:
+    void raiseAlert(const char* vitalName, const char* level)
+    {
+      std::cout<<"SMS: "<<vitalname<<" " <<level;
+    }
+};
+
+
+class AlertWithSound
+{
+  public:
+    void raiseAlert(const char* vitalName, const char* level)
+    {
+      std::cout<<"Sound: "<<vitalname<<" " <<level;
+    }
+};
+
+alert->raiseAlert("pulse rate","too low");
 
 
 bool IsInLimit(float value,float lowerLimit,float upperLimit ) {
@@ -28,7 +60,7 @@ int main() {
   assert(vitalsAreOk(80, 95, 60) == true);// all are in range/limits
   assert(vitalsAreOk(50, 85, 45) == false);//bpm fails lowerlimit
   assert(vitalsAreOk(200, 85, 45) == false);//bpm fails higherlit
-  assert(vitalsAreOk(80, 30, 45) == false);// spo fails
+  assert(vitalsAreOk(80, 30, 45) == false);// spo fails 
   assert(vitalsAreOk(80, 93, 10) == false);//resp fails lowerlimit
   assert(vitalsAreOk(80, 93, 200) == false);//resp fails upperlimit
   assert(vitalsAreOk(170, 20, 60) == false);// bpm and spo fails
